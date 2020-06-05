@@ -19,10 +19,21 @@ cmake_minimum_required(VERSION 3.4.1)
 
 add_library(yuv2rgba
             SHARED
-            yuv2rgba.cpp)
+            native.cpp
+        )
+
+add_library(convert
+            SHARED
+            convert_utils.cpp)
+
+add_library(rotate
+            SHARED
+            rotate_utils.cpp)
 
 find_library(log-lib
              log)
 
 target_link_libraries(yuv2rgba
+                      convert
+                      rotate
                       ${log-lib})

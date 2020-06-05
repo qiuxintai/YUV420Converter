@@ -21,7 +21,7 @@ package com.qxt.yuv420;
  * @author Tyler Qiu
  * @date: 2020/05/09
  */
-public class YUV2RGBAUtils {
+public class Yuv420ToRgbaUtils {
     /*
      * YYYYYYYY UU VV    =>YUV420P
      * YYYYYYYY VV UU    =>YUV420P
@@ -30,6 +30,7 @@ public class YUV2RGBAUtils {
      */
     static {
         System.loadLibrary("yuv2rgba");
+        System.loadLibrary("convert");
     }
 
     /**
@@ -127,27 +128,4 @@ public class YUV2RGBAUtils {
      * @param rgba     dst RGBA int array, the length of the dst array must be >= width*height
      */
     public static native void NV21ToRGBAInt(byte[] yuv420sp, int width, int height, int[] rgba);
-
-    /**
-     * rotate RGBA or RGB image
-     *
-     * @param src    The input array.
-     * @param dst    The output array.
-     * @param width  The width of image.
-     * @param height The height of image.
-     * @param bpp    The byte count of per pixel. RGBA is 4, RGB is 3.
-     * @param degree The rotate degree, must be 90.0f or 180.0f or 270.0f.
-     */
-    public static native void rotateByte(byte[] src, byte[] dst, int width, int height, int bpp, float degree);
-
-    /**
-     * rotate RGBA image
-     *
-     * @param src    The input array.
-     * @param dst    The output array.
-     * @param width  The width of image.
-     * @param height The height of image.
-     * @param degree The rotate degree, must be 90.0f or 180.0f or 270.0f.
-     */
-    public static native void rotateInt(int[] src, int[] dst, int width, int height, float degree);
 }
