@@ -27,15 +27,7 @@ extern "C" {
 
 void rotateYUV420P(unsigned char *src, unsigned char *dst, int width, int height, float degree);
 
-void rotateYUV420P3(unsigned char *srcY, unsigned char *srcU, unsigned char *srcV,
-                    unsigned char *dstY, unsigned char *dstU, unsigned char *dstV,
-                    int width, int height, float degree);
-
 void rotateYUV420SP(unsigned char *src, unsigned char *dst, int width, int height, float degree);
-
-void rotateYUV420SP2(unsigned char *srcY, unsigned char *srcUV,
-                     unsigned char *dstY, unsigned char *dstUV,
-                     int width, int height, float degree);
 
 void rotateRGB(unsigned char *src, unsigned char *dst, int width, int height, float degree);
 

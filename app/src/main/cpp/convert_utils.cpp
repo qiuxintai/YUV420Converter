@@ -75,10 +75,11 @@ void YUV420PToRGBAByte(unsigned char *yuv420p, unsigned char *rgba, int width,
             pV = yuv420p + width * height;
         }
         for (int y = 0; y < height; y++) {
+            //const int yRowStart = yRowStride * y;
             const int uvRowStart = uvRowStride * (y >> 1);
             for (int x = 0; x < width; x++) {
                 const int uvRowOffset = (x >> 1) * uvPixelStride;
-                rgbaIntToBytes(YUV2RGBA(pY[yRowStride * y + x],
+                rgbaIntToBytes(YUV2RGBA(*pY++,//pY[yRowStart + x],
                                         pU[uvRowStart + uvRowOffset],
                                         pV[uvRowStart + uvRowOffset]),
                                pRGBA);
@@ -104,10 +105,11 @@ void YUV420PToRGBAInt(unsigned char *yuv420p, int *rgba, int width,
             pV = yuv420p + width * height;
         }
         for (int y = 0; y < height; y++) {
+            //const int yRowStart = yRowStride * y;
             const int uvRowStart = uvRowStride * (y >> 1);
             for (int x = 0; x < width; x++) {
                 const int uvRowOffset = (x >> 1) * uvPixelStride;
-                rgba[rgbaIndex++] = YUV2RGBA(pY[yRowStride * y + x],
+                rgba[rgbaIndex++] = YUV2RGBA(*pY++,//pY[yRowStart + x],
                                              pU[uvRowStart + uvRowOffset],
                                              pV[uvRowStart + uvRowOffset]);
             }

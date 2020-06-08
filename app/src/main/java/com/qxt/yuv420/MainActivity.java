@@ -138,15 +138,15 @@ public class MainActivity extends AppCompatActivity {
                 Log.d(TAG, "convertByte---end");
                 final String fileName = "byte_" + file;
                 final String parent = ImageUtils.getPicturesPath(context);
-                Log.d(TAG, "RGBAToJPEG---start");
+                /*Log.d(TAG, "RGBAToJPEG---start");
                 ImageUtils.RGBAToJPEG(context, rgba, width, height, parent, fileName);
-                Log.d(TAG, "RGBAToJPEG---end");
+                Log.d(TAG, "RGBAToJPEG---end");*/
 
                 //Log.d(TAG, "rotate---start");
-                //final byte[] rotatedRgba = new byte[width * height * 4];
+                final byte[] rotatedRgba = new byte[width * height * 4];
                 //rotate 90
-                //RotateUtils.rotateRGBA(rgba, rotatedRgba, width, height, 90.0f);
-                //ImageUtils.RGBAToJPEG(context, rotatedRgba, height, width, parent, fileName);
+                RotateUtils.rotateRGBA(rgba, rotatedRgba, width, height, 90.0f);
+                ImageUtils.RGBAToJPEG(context, rotatedRgba, height, width, parent, fileName);
 
                 //rotate 180
                 //RotateUtils.rotateRGBA(rgba, rotatedRgba, width, height, 180.0f);
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
                 final String fileName;
                 final String parent = ImageUtils.getPicturesPath(context);
                 final float rotationDegree = 90.0f;//180.0f;//270.0f;
-                final byte[] rotatedYUV420 = new byte[width * height * 3 / 2];
+                //final byte[] rotatedYUV420 = new byte[width * height * 3 / 2];
                 Log.d(TAG, "convertByte---start");
                 switch (id) {
                     case R.id.i420_to_rgba_int:
@@ -217,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nv12_to_rgba_int:
                         fileName = "int_" + "nv12_3264x2448";
                         yuv420 = FileUtils.readRaw(context, R.raw.nv12_3264x2448);
-                        //Yuv420ToRgbaUtils.NV12ToRGBAInt(yuv420, width, height, rgba);
+                        Yuv420ToRgbaUtils.NV12ToRGBAInt(yuv420, width, height, rgba);
 
-                        Log.d(TAG, "rotate NV12---start");
+                        /*Log.d(TAG, "rotate NV12---start");
                         RotateUtils.rotateYUV420SP(yuv420, rotatedYUV420, width, height, rotationDegree);
                         if (rotationDegree == 90.0f || rotationDegree == 270.0f) {
                             Yuv420ToRgbaUtils.NV12ToRGBAInt(rotatedYUV420, height, width, rgba);
@@ -228,14 +228,14 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Yuv420ToRgbaUtils.NV12ToRGBAInt(yuv420, width, height, rgba);
                         }
-                        Log.d(TAG, "rotate NV12---end");
+                        Log.d(TAG, "rotate NV12---end");*/
                         break;
                     case R.id.nv21_to_rgba_int:
                         fileName = "int_" + "nv21_3264x2448";
                         yuv420 = FileUtils.readRaw(context, R.raw.nv21_3264x2448);
-                        //Yuv420ToRgbaUtils.NV21ToRGBAInt(yuv420, width, height, rgba);
+                        Yuv420ToRgbaUtils.NV21ToRGBAInt(yuv420, width, height, rgba);
 
-                        Log.d(TAG, "rotate NV21---start");
+                        /*Log.d(TAG, "rotate NV21---start");
                         RotateUtils.rotateYUV420SP(yuv420, rotatedYUV420, width, height, rotationDegree);
                         if (rotationDegree == 90.0f || rotationDegree == 270.0f) {
                             Yuv420ToRgbaUtils.NV21ToRGBAInt(rotatedYUV420, height, width, rgba);
@@ -244,18 +244,16 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             Yuv420ToRgbaUtils.NV21ToRGBAInt(yuv420, width, height, rgba);
                         }
-                        Log.d(TAG, "rotate NV21---end");
+                        Log.d(TAG, "rotate NV21---end");*/
                         break;
                     default:
                         throw new IllegalArgumentException("Unknown format");
                 }
                 Log.d(TAG, "convertInt---end");
 
-                /*Log.d(TAG, "rotate RGBA---start");
                 final int[] rotatedRgba = new int[width * height];
                 RotateUtils.rotateRGBAInt(rgba, rotatedRgba, width, height, rotationDegree);
                 System.arraycopy(rotatedRgba, 0, rgba, 0, width * height);
-                Log.d(TAG, "rotate RGBA---end");*/
 
                 Log.d(TAG, "RGBAToJPEG---start");
                 if (rotationDegree == 90.0f || rotationDegree == 270.0f) {
