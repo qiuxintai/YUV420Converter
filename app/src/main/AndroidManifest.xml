@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  Copyright 2020 Tyler Qiu.
  YUV420 to RGBA open source project.
 
@@ -36,6 +35,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".NativeTestActivity"
+            android:label="NativeTestActivity" />
+        <activity
+            android:name=".OpencvTestActivity"
+            android:label="OpencvTestActivity" />
+        <activity
+            android:name=".LibyuvTestActivity"
+            android:label="LibyuvTestActivity" />
     </application>
 
 </manifest>

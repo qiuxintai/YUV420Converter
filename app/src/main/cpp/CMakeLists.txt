@@ -17,23 +17,44 @@
 
 cmake_minimum_required(VERSION 3.4.1)
 
-add_library(yuv2rgba
-            SHARED
-            native.cpp
-        )
+include_directories(${CMAKE_SOURCE_DIR}/include)
 
-add_library(convert
-            SHARED
-            convert_utils.cpp)
+find_library(log-lib log)
 
-add_library(rotate
-            SHARED
-            rotate_utils.cpp)
+add_library(
+        NativeUtils
+        SHARED
+        native.cpp
+        native_utils.cpp
+)
+target_link_libraries(NativeUtils ${log-lib})
 
-find_library(log-lib
-             log)
+add_library(opencv3 SHARED IMPORTED)
+set_target_properties(
+        opencv3
+        PROPERTIES
+        IMPORTED_LOCATION ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libopencv_java3.so
+)
 
-target_link_libraries(yuv2rgba
-                      convert
-                      rotate
-                      ${log-lib})
+add_library(
+        OpencvUtils
+        SHARED
+        opencv.cpp
+        opencv_utils.cpp
+)
+target_link_libraries(OpencvUtils opencv3 ${log-lib})
+
+add_library(libyuv SHARED IMPORTED)
+set_target_properties(
+        libyuv
+        PROPERTIES IMPORTED_LOCATION
+        ${CMAKE_SOURCE_DIR}/../jniLibs/${ANDROID_ABI}/libyuv.so
+)
+
+add_library(
+        LibyuvUtils
+        SHARED
+        libyuv.cpp
+        libyuv_utils.cpp
+)
+target_link_libraries(LibyuvUtils libyuv ${log-lib})

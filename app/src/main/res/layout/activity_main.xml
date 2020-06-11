@@ -25,99 +25,39 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/i420_to_rgba_byte"
+        android:id="@+id/native_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="onClick"
-        android:text="I420ToRGBAByte"
+        android:text="Native test"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/yv12_to_rgba_byte"
+        android:id="@+id/opencv_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="onClick"
-        android:text="YV12ToRGBAByte"
+        android:text="OpenCV test"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/i420_to_rgba_byte" />
+        app:layout_constraintTop_toBottomOf="@id/native_test" />
 
     <Button
-        android:id="@+id/nv12_to_rgba_byte"
+        android:id="@+id/libyuv_test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="onClick"
-        android:text="NV12ToRGBAByte"
+        android:text="Libyuv test"
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/yv12_to_rgba_byte" />
-
-    <Button
-        android:id="@+id/nv21_to_rgba_byte"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="NV21ToRGBAByte"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nv12_to_rgba_byte" />
-
-    <Button
-        android:id="@+id/i420_to_rgba_int"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="I420ToRGBAInt"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nv21_to_rgba_byte" />
-
-    <Button
-        android:id="@+id/yv12_to_rgba_int"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="YV12ToRGBAInt"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/i420_to_rgba_int" />
-
-    <Button
-        android:id="@+id/nv12_to_rgba_int"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="NV12ToRGBAInt"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/yv12_to_rgba_int" />
-
-    <Button
-        android:id="@+id/nv21_to_rgba_int"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:onClick="onClick"
-        android:text="NV21ToRGBAInt"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nv12_to_rgba_int" />
+        app:layout_constraintTop_toBottomOf="@id/opencv_test" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
